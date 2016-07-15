@@ -8,8 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
+@interface ViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 
+@property UITableView *tableView;
+@property NSArray *tableLabelList;
+@property NSArray *tableRequestList;
 
 @end
 
