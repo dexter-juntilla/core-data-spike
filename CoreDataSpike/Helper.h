@@ -13,5 +13,6 @@
 
 + (CGFloat) getScreenWidth;
 + (CGFloat) getScreenHeight;
-
++ (void) showLoader:(UIView *)view;
++ (void) hideLoader:(UIView *)view;
 @end

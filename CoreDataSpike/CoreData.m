@@ -10,7 +10,9 @@
 
 @implementation CoreData
 
-@synthesize managedObjectContext = _managedObjectContext;
+@synthesize masterObjectContext = _masterObjectContext;
+@synthesize backgroundObjectContext = _backgroundObjectContext;
+@synthesize fetchObjectContext = _fetchObjectContext;
 @synthesize managedObjectModel = _managedObjectModel;
 @synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
 
@@ -66,31 +68,61 @@
     return _persistentStoreCoordinator;
 }
 
-- (NSManagedObjectContext *)managedObjectContext {
-    // Returns the managed object context for the application (which is already bound to the persistent store coordinator for the application.)
-    if (_managedObjectContext != nil) {
-        return _managedObjectContext;
+- (NSManagedObjectContext *)masterObjectContext {
+    if (_masterObjectContext != nil) {
+        return _masterObjectContext;
     }
     
     NSPersistentStoreCoordinator *coordinator = [self persistentStoreCoordinator];
     if (!coordinator) {
         return nil;
     }
-    _managedObjectContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSMainQueueConcurrencyType];
-    [_managedObjectContext setPersistentStoreCoordinator:coordinator];
-    return _managedObjectContext;
+    
+    NSManagedObjectContext *storageBackgroundObjectContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
+    [storageBackgroundObjectContext setPersistentStoreCoordinator:coordinator];
+    
+    _masterObjectContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSMainQueueConcurrencyType];
+    [_masterObjectContext setParentContext:storageBackgroundObjectContext];
+    return _masterObjectContext;
+}
+
+- (NSManagedObjectContext *)backgroundObjectContext {
+    if (_backgroundObjectContext != nil) {
+        return _backgroundObjectContext;
+    }
+    
+    _backgroundObjectContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
+    [_backgroundObjectContext performBlockAndWait:^{
+        [_backgroundObjectContext setParentContext:[self masterObjectContext]];
+    }];
+    
+    return _backgroundObjectContext;
+}
+
+-(NSManagedObjectContext *)fetchObjectContext {
+    if (_fetchObjectContext != nil) {
+        return _fetchObjectContext;
+    }
+    
+    _fetchObjectContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
+    [_fetchObjectContext performBlock:^{
+        [_fetchObjectContext setParentContext:[self masterObjectContext]];
+    }];
+    
+    return _fetchObjectContext;
 }
 
 - (void)saveContext {
-    NSManagedObjectContext *managedObjectContext = self.managedObjectContext;
-    if (managedObjectContext != nil) {
-        NSError *error = nil;
-        if ([managedObjectContext hasChanges] && ![managedObjectContext save:&error]) {
-            // Replace this implementation with code to handle the error appropriately.
-            // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-            NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-            abort();
-        }
-    }
+    [[self backgroundObjectContext] performBlock:^{
+        [[self backgroundObjectContext] save:nil];
+        
+        [[self masterObjectContext] performBlock:^{
+            [[self masterObjectContext] save:nil];
+            
+            [[[self masterObjectContext] parentContext] performBlock:^{
+                [[[self masterObjectContext] parentContext] save:nil];
+            }];
+        }];
+    }];
 }
 @end

@@ -14,5 +14,10 @@
 @property NSArray *tableLabelList;
 @property NSArray *tableRequestList;
 
+- (void)leftBarButtonPressed;
+- (void)rightBarButtonPressed;
+- (void)requestData;
+- (void)dropAll;
+
 @end
 

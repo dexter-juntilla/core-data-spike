@@ -10,6 +10,14 @@
 		A222A56B1D38A9F300D08AD5 /* Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = A222A56A1D38A9F300D08AD5 /* Helper.m */; };
 		A222A56E1D38CA2800D08AD5 /* DetailsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A222A56D1D38CA2800D08AD5 /* DetailsTableViewController.m */; };
 		A222A5711D38E02600D08AD5 /* CoreData.m in Sources */ = {isa = PBXBuildFile; fileRef = A222A5701D38E02600D08AD5 /* CoreData.m */; };
+		A25BD31B1D3D8AFE0050540F /* User+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = A25BD3181D3D8AFE0050540F /* User+CoreDataProperties.m */; };
+		A25BD31C1D3D8AFE0050540F /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = A25BD31A1D3D8AFE0050540F /* User.m */; };
+		A25BD3211D3D9CEC0050540F /* Project+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = A25BD31E1D3D9CEC0050540F /* Project+CoreDataProperties.m */; };
+		A25BD3221D3D9CEC0050540F /* Project.m in Sources */ = {isa = PBXBuildFile; fileRef = A25BD3201D3D9CEC0050540F /* Project.m */; };
+		A25BD3271D3DD9520050540F /* Element+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = A25BD3241D3DD9520050540F /* Element+CoreDataProperties.m */; };
+		A25BD3281D3DD9520050540F /* Element.m in Sources */ = {isa = PBXBuildFile; fileRef = A25BD3261D3DD9520050540F /* Element.m */; };
+		A2BEC14B1D3DF6CE000A5173 /* Visit+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = A2BEC1481D3DF6CE000A5173 /* Visit+CoreDataProperties.m */; };
+		A2BEC14C1D3DF6CE000A5173 /* Visit.m in Sources */ = {isa = PBXBuildFile; fileRef = A2BEC14A1D3DF6CE000A5173 /* Visit.m */; };
 		A2C3D1AA1D3890A5008C4B40 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A2C3D1A91D3890A5008C4B40 /* main.m */; };
 		A2C3D1AD1D3890A5008C4B40 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A2C3D1AC1D3890A5008C4B40 /* AppDelegate.m */; };
 		A2C3D1B01D3890A5008C4B40 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A2C3D1AF1D3890A5008C4B40 /* ViewController.m */; };
@@ -30,6 +38,22 @@
 		A222A56D1D38CA2800D08AD5 /* DetailsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailsTableViewController.m; sourceTree = "<group>"; };
 		A222A56F1D38E02600D08AD5 /* CoreData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreData.h; sourceTree = "<group>"; };
 		A222A5701D38E02600D08AD5 /* CoreData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreData.m; sourceTree = "<group>"; };
+		A25BD3171D3D8AFE0050540F /* User+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "User+CoreDataProperties.h"; sourceTree = "<group>"; };
+		A25BD3181D3D8AFE0050540F /* User+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "User+CoreDataProperties.m"; sourceTree = "<group>"; };
+		A25BD3191D3D8AFE0050540F /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
+		A25BD31A1D3D8AFE0050540F /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
+		A25BD31D1D3D9CEC0050540F /* Project+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Project+CoreDataProperties.h"; sourceTree = "<group>"; };
+		A25BD31E1D3D9CEC0050540F /* Project+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Project+CoreDataProperties.m"; sourceTree = "<group>"; };
+		A25BD31F1D3D9CEC0050540F /* Project.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Project.h; sourceTree = "<group>"; };
+		A25BD3201D3D9CEC0050540F /* Project.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Project.m; sourceTree = "<group>"; };
+		A25BD3231D3DD9520050540F /* Element+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Element+CoreDataProperties.h"; sourceTree = "<group>"; };
+		A25BD3241D3DD9520050540F /* Element+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Element+CoreDataProperties.m"; sourceTree = "<group>"; };
+		A25BD3251D3DD9520050540F /* Element.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Element.h; sourceTree = "<group>"; };
+		A25BD3261D3DD9520050540F /* Element.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Element.m; sourceTree = "<group>"; };
+		A2BEC1471D3DF6CE000A5173 /* Visit+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Visit+CoreDataProperties.h"; sourceTree = "<group>"; };
+		A2BEC1481D3DF6CE000A5173 /* Visit+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Visit+CoreDataProperties.m"; sourceTree = "<group>"; };
+		A2BEC1491D3DF6CE000A5173 /* Visit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Visit.h; sourceTree = "<group>"; };
+		A2BEC14A1D3DF6CE000A5173 /* Visit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Visit.m; sourceTree = "<group>"; };
 		A2C3D1A51D3890A5008C4B40 /* CoreDataSpike.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoreDataSpike.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2C3D1A91D3890A5008C4B40 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		A2C3D1AB1D3890A5008C4B40 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -56,6 +80,29 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A25BD30A1D3CB6CA0050540F /* models */ = {
+			isa = PBXGroup;
+			children = (
+				A25BD3171D3D8AFE0050540F /* User+CoreDataProperties.h */,
+				A25BD3181D3D8AFE0050540F /* User+CoreDataProperties.m */,
+				A25BD3191D3D8AFE0050540F /* User.h */,
+				A25BD31A1D3D8AFE0050540F /* User.m */,
+				A25BD31D1D3D9CEC0050540F /* Project+CoreDataProperties.h */,
+				A25BD31E1D3D9CEC0050540F /* Project+CoreDataProperties.m */,
+				A25BD31F1D3D9CEC0050540F /* Project.h */,
+				A25BD3201D3D9CEC0050540F /* Project.m */,
+				A25BD3231D3DD9520050540F /* Element+CoreDataProperties.h */,
+				A25BD3241D3DD9520050540F /* Element+CoreDataProperties.m */,
+				A25BD3251D3DD9520050540F /* Element.h */,
+				A25BD3261D3DD9520050540F /* Element.m */,
+				A2BEC1471D3DF6CE000A5173 /* Visit+CoreDataProperties.h */,
+				A2BEC1481D3DF6CE000A5173 /* Visit+CoreDataProperties.m */,
+				A2BEC1491D3DF6CE000A5173 /* Visit.h */,
+				A2BEC14A1D3DF6CE000A5173 /* Visit.m */,
+			);
+			name = models;
+			sourceTree = "<group>";
+		};
 		A2C3D19C1D3890A5008C4B40 = {
 			isa = PBXGroup;
 			children = (
@@ -78,6 +125,7 @@
 			isa = PBXGroup;
 			children = (
 				A2C3D1AB1D3890A5008C4B40 /* AppDelegate.h */,
+				A25BD30A1D3CB6CA0050540F /* models */,
 				A222A56F1D38E02600D08AD5 /* CoreData.h */,
 				A222A5701D38E02600D08AD5 /* CoreData.m */,
 				A222A56C1D38CA2800D08AD5 /* DetailsTableViewController.h */,
@@ -246,11 +294,19 @@
 			files = (
 				A2C3D1B01D3890A5008C4B40 /* ViewController.m in Sources */,
 				A2C3D1B61D3890A5008C4B40 /* CoreDataSpike.xcdatamodeld in Sources */,
+				A25BD31C1D3D8AFE0050540F /* User.m in Sources */,
 				A2C3D1AD1D3890A5008C4B40 /* AppDelegate.m in Sources */,
+				A25BD3221D3D9CEC0050540F /* Project.m in Sources */,
+				A25BD3281D3DD9520050540F /* Element.m in Sources */,
+				A2BEC14C1D3DF6CE000A5173 /* Visit.m in Sources */,
 				A2C3D1AA1D3890A5008C4B40 /* main.m in Sources */,
 				A222A56E1D38CA2800D08AD5 /* DetailsTableViewController.m in Sources */,
 				A222A56B1D38A9F300D08AD5 /* Helper.m in Sources */,
+				A25BD3271D3DD9520050540F /* Element+CoreDataProperties.m in Sources */,
+				A25BD31B1D3D8AFE0050540F /* User+CoreDataProperties.m in Sources */,
+				A2BEC14B1D3DF6CE000A5173 /* Visit+CoreDataProperties.m in Sources */,
 				A222A5711D38E02600D08AD5 /* CoreData.m in Sources */,
+				A25BD3211D3D9CEC0050540F /* Project+CoreDataProperties.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

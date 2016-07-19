@@ -12,5 +12,6 @@
 
 @property UITableView *tableView;
 @property NSArray *tableDataSource;
+@property NSArray *tableData;
 
 @end
