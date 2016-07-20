@@ -72,14 +72,52 @@
 //      NSDictionary *obj = [[[self tableData] objectAtIndex:[indexPath row]] dictionaryWithValuesForKeys:keys];
         
         NSArray *tableData = [[NSArray alloc] initWithObjects:[[self tableData] objectAtIndex:[indexPath row]], nil];
-        detailsTableViewController.tableData = tableData;
-        detailsTableViewController.tableDataSource = keys;
+        detailsTableViewController.tableData = [tableData mutableCopy];
+        detailsTableViewController.tableDataSource = [keys mutableCopy];
+        detailsTableViewController.modelType = [self modelType];
         [[self navigationController] pushViewController:detailsTableViewController animated:YES];
     }
-    else {
+    else if ([[self tableData] count] == 1) {
         NSDictionary *obj = [[[self tableData] objectAtIndex:0] dictionaryWithValuesForKeys:[self tableDataSource]];
         NSLog(@"%@", [obj objectForKey:[[self tableDataSource] objectAtIndex:[indexPath row]]]);
     }
 }
+
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    if ([[self tableData] count] > 1) {
+        return YES;
+    }
+    return NO;
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        NSLog(@"%@", [[self tableDataSource] objectAtIndex:[indexPath row]]);
+        
+        NSError *error = nil;
+        
+        NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:[self modelType]];
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"%K == %@", @"id", [[self tableDataSource] objectAtIndex:[indexPath row]]];
+        NSEntityDescription *entityDescription =  [NSEntityDescription entityForName:[self modelType] inManagedObjectContext:[[CoreData sharedInstance] backgroundObjectContext]];
+        
+        [fetchRequest setPredicate:predicate];
+        [fetchRequest setEntity:entityDescription];
+        
+        NSArray *result = [[[[CoreData sharedInstance] backgroundObjectContext] executeRequest:fetchRequest error:&error] finalResult];
+        NSManagedObject *objectToDelete = (NSManagedObject *)[result objectAtIndex:0];
+        
+        [[[CoreData sharedInstance] backgroundObjectContext] deleteObject:objectToDelete];
+        [[objectToDelete managedObjectContext] save:&error];
+
+        [[self navigationController] popToRootViewControllerAnimated:YES];
+//        if (!error) { //this block has issues with array indeces after deletion
+//            [[self tableDataSource] removeObjectAtIndex:[indexPath row]];
+//            [[self tableView] reloadData];
+//        }
+        
+    }
+}
+
+
 
 @end

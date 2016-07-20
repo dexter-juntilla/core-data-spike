@@ -11,7 +11,8 @@
 @interface DetailsTableViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 
 @property UITableView *tableView;
-@property NSArray *tableDataSource;
-@property NSArray *tableData;
+@property NSString *modelType;
+@property NSMutableArray *tableDataSource;
+@property NSMutableArray *tableData;
 
 @end

@@ -48,9 +48,9 @@
                         requestGetElements,
                         requestGetVisits, nil];
     
-//    UIBarButtonItem *deleteData = [[UIBarButtonItem alloc] initWithTitle: @"Delete Data" style:UIBarButtonItemStylePlain target: self action:@selector(leftBarButtonPressed)];
-//    [self.navigationController.navigationBar setBarStyle:UIBarStyleDefault];
-//    [self.navigationItem setLeftBarButtonItem:deleteData];
+    UIBarButtonItem *deleteData = [[UIBarButtonItem alloc] initWithTitle: @"Delete Data" style:UIBarButtonItemStylePlain target: self action:@selector(leftBarButtonPressed)];
+    [self.navigationController.navigationBar setBarStyle:UIBarStyleDefault];
+    [self.navigationItem setLeftBarButtonItem:deleteData];
     
     UIBarButtonItem *requestData = [[UIBarButtonItem alloc] initWithTitle: @"Get Data" style:UIBarButtonItemStylePlain target: self action:@selector(rightBarButtonPressed)];
     [self.navigationController.navigationBar setBarStyle:UIBarStyleDefault];
@@ -147,6 +147,7 @@
         detailsTableViewController.tableDataSource = attributeNames;
     }
     
+    detailsTableViewController.modelType = [[self tableLabelList] objectAtIndex:[indexPath row]];
     [[self navigationController] pushViewController:detailsTableViewController animated:YES];
 }
 
@@ -157,6 +158,7 @@
         
         NSError *deleteError = nil;
         [[[CoreData sharedInstance] persistentStoreCoordinator] executeRequest:delete withContext:[[CoreData sharedInstance] masterObjectContext] error:&deleteError];
+        [[CoreData sharedInstance] saveContext];
     }
 }
 
